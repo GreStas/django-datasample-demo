@@ -1,0 +1,1020 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0445\u0435\u043c\u044b \u043a\u043e\u043c\u043f\u043e\u043d\u043e\u0432\u043a\u0438 \u0434\u0430\u043d\u043d\u044b\u0445",
+    "content_type": 7,
+    "codename": "add_sample"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0445\u0435\u043c\u044b \u043a\u043e\u043c\u043f\u043e\u043d\u043e\u0432\u043a\u0438 \u0434\u0430\u043d\u043d\u044b\u0445",
+    "content_type": 7,
+    "codename": "change_sample"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0445\u0435\u043c\u044b \u043a\u043e\u043c\u043f\u043e\u043d\u043e\u0432\u043a\u0438 \u0434\u0430\u043d\u043d\u044b\u0445",
+    "content_type": 7,
+    "codename": "delete_sample"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view \u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0441\u0445\u0435\u043c\u044b \u043a\u043e\u043c\u043f\u043e\u043d\u043e\u0432\u043a\u0438 \u0434\u0430\u043d\u043d\u044b\u0445",
+    "content_type": 7,
+    "codename": "view_sample"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add \u0413\u0440\u0443\u043f\u043f\u0430 \u0442\u043e\u0432\u0430\u0440\u043e\u0432",
+    "content_type": 8,
+    "codename": "add_catalog"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change \u0413\u0440\u0443\u043f\u043f\u0430 \u0442\u043e\u0432\u0430\u0440\u043e\u0432",
+    "content_type": 8,
+    "codename": "change_catalog"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete \u0413\u0440\u0443\u043f\u043f\u0430 \u0442\u043e\u0432\u0430\u0440\u043e\u0432",
+    "content_type": 8,
+    "codename": "delete_catalog"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view \u0413\u0440\u0443\u043f\u043f\u0430 \u0442\u043e\u0432\u0430\u0440\u043e\u0432",
+    "content_type": 8,
+    "codename": "view_catalog"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add \u0423\u0441\u043b\u0443\u0433\u0430",
+    "content_type": 9,
+    "codename": "add_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change \u0423\u0441\u043b\u0443\u0433\u0430",
+    "content_type": 9,
+    "codename": "change_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete \u0423\u0441\u043b\u0443\u0433\u0430",
+    "content_type": 9,
+    "codename": "delete_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view \u0423\u0441\u043b\u0443\u0433\u0430",
+    "content_type": 9,
+    "codename": "view_service"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add \u0422\u043e\u0432\u0430\u0440",
+    "content_type": 10,
+    "codename": "add_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change \u0422\u043e\u0432\u0430\u0440",
+    "content_type": 10,
+    "codename": "change_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete \u0422\u043e\u0432\u0430\u0440",
+    "content_type": 10,
+    "codename": "delete_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view \u0422\u043e\u0432\u0430\u0440",
+    "content_type": 10,
+    "codename": "view_product"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add \u0422\u0430\u0440\u0438\u0444 \u043d\u0430 \u0443\u0441\u043b\u0443\u0433\u0443 \u0434\u043b\u044f \u0442\u043e\u0432\u0430\u0440\u0430",
+    "content_type": 11,
+    "codename": "add_tarif"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change \u0422\u0430\u0440\u0438\u0444 \u043d\u0430 \u0443\u0441\u043b\u0443\u0433\u0443 \u0434\u043b\u044f \u0442\u043e\u0432\u0430\u0440\u0430",
+    "content_type": 11,
+    "codename": "change_tarif"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete \u0422\u0430\u0440\u0438\u0444 \u043d\u0430 \u0443\u0441\u043b\u0443\u0433\u0443 \u0434\u043b\u044f \u0442\u043e\u0432\u0430\u0440\u0430",
+    "content_type": 11,
+    "codename": "delete_tarif"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view \u0422\u0430\u0440\u0438\u0444 \u043d\u0430 \u0443\u0441\u043b\u0443\u0433\u0443 \u0434\u043b\u044f \u0442\u043e\u0432\u0430\u0440\u0430",
+    "content_type": 11,
+    "codename": "view_tarif"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$H2bDeHoeN3m8$wazzwmgaQ5/e+1v3EMQ7Xt/PPlQG2VDoZzNbZPjzF/Q=",
+    "last_login": "2019-10-17T18:24:09.091Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "s.hrebenuk@ciat.net.ua",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-10-17T08:44:29.931Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$BBl6eQHYSzUF$Hu0XRm2YSy8bHo7miE/LpqiKdrRIGiYb7GKFxApYT5k=",
+    "last_login": null,
+    "is_superuser": true,
+    "username": "boss",
+    "first_name": "\u041e\u0441\u0442\u0430\u043f",
+    "last_name": "\u0411\u044d\u043d\u0434\u0435\u0440",
+    "email": "ob@randk.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-10-17T12:14:40Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$pAqlDaSVNNbo$9hlQIcA2uRrO1B/5BcbCGQAB/sQxgNR0NhsBES/jFKs=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "manager1",
+    "first_name": "\u0428\u0443\u0440\u0430",
+    "last_name": "\u0411\u0430\u043b\u0430\u0433\u0430\u043d\u043e\u0432",
+    "email": "ab@randk.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-17T12:16:19Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$z1ux0VrctCiy$cDAVi/kdZnleUDoj5PRe0mQ5PhfwFVeLEFWjnhzmVyY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "manager2",
+    "first_name": "\u041c\u0438\u0445\u0430\u0438\u043b",
+    "last_name": "\u041f\u0430\u043d\u0438\u043a\u043e\u0432\u0441\u043a\u0438\u0439",
+    "email": "mp@randk.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-17T12:17:27Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$fyPaOwcOYmQf$uXV8N1mr4iylc0HZtxTbML4/PUFe7InCzmGFOuSNl28=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "seller1",
+    "first_name": "\u0410\u0434\u0430\u043c",
+    "last_name": "\u041a\u043e\u0437\u043b\u0435\u0432\u0438\u0447",
+    "email": "seller1@randk.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-17T12:18:34Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$VYO3BLPxC42B$ACSM1KmR4Kx6BCxFFxCsdx5N3SLcZAuyd2MolS1BEcc=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "seller2",
+    "first_name": "\u0417\u043e\u0441\u044f",
+    "last_name": "\u0421\u0438\u043d\u0438\u0446\u043a\u0430\u044f",
+    "email": "seller2@randk.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-17T12:19:21Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "example.catalog",
+  "pk": 1,
+  "fields": {
+    "name": "\u0438\u0433\u0440\u0443\u0448\u043a\u0438",
+    "manager": 3,
+    "sellers": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "example.catalog",
+  "pk": 2,
+  "fields": {
+    "name": "\u043f\u043e\u0441\u0443\u0434\u0430",
+    "manager": 4,
+    "sellers": [
+      5
+    ]
+  }
+},
+{
+  "model": "example.catalog",
+  "pk": 3,
+  "fields": {
+    "name": "\u044d\u043b\u0435\u043a\u0442\u0440\u043e\u0442\u043e\u0432\u0430\u0440\u044b \u0431\u044b\u0442\u043e\u0432\u044b\u0435",
+    "manager": 4,
+    "sellers": [
+      6
+    ]
+  }
+},
+{
+  "model": "example.catalog",
+  "pk": 4,
+  "fields": {
+    "name": "\u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u0438\u043a\u0430",
+    "manager": 3,
+    "sellers": [
+      3,
+      6
+    ]
+  }
+},
+{
+  "model": "example.catalog",
+  "pk": 5,
+  "fields": {
+    "name": "\u043a\u043e\u0441\u043c\u0435\u0442\u0438\u043a\u0430",
+    "manager": 4,
+    "sellers": [
+      6
+    ]
+  }
+},
+{
+  "model": "example.catalog",
+  "pk": 6,
+  "fields": {
+    "name": "\u043a\u0430\u043d\u0446\u0435\u043b\u044f\u0440\u0438\u044f",
+    "manager": 4,
+    "sellers": [
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "example.product",
+  "pk": 1,
+  "fields": {
+    "name": "\u044d\u043b\u043a\u0435\u043a\u0442\u0440\u043e-\u043c\u044f\u0441\u043e\u0440\u0443\u0431\u043a\u0430 \u0422\u0435\u0444\u0430\u043b\u044c",
+    "label": "tefal-el-mc",
+    "description": "\u044d\u043b\u0435\u043a\u0442\u0440\u043e-\u043c\u044f\u0441\u043e\u0440\u0443\u0431\u043a\u0430 Tefal \u0441 \u043d\u0430\u0441\u0430\u0434\u043a\u0430\u043c\u0438",
+    "catalog": 3,
+    "price": "5080.00",
+    "counts": 4
+  }
+},
+{
+  "model": "example.product",
+  "pk": 2,
+  "fields": {
+    "name": "\u043a\u0430\u0440\u0430\u043d\u0434\u0430\u0448\u0438 \u0446\u0432\u0435\u0442\u043d\u044b\u0435",
+    "label": "color-pencils",
+    "description": "\u043a\u0430\u0440\u0430\u043d\u0434\u0430\u0448\u0438 \u0446\u0432\u0435\u0442\u043d\u044b\u0435 \u0432 \u043f\u0430\u0447\u043a\u0435",
+    "catalog": 6,
+    "price": "50.00",
+    "counts": 100
+  }
+},
+{
+  "model": "example.product",
+  "pk": 3,
+  "fields": {
+    "name": "\u043a\u0430\u0440\u0430\u043d\u0434\u0430\u0448\u0438 \u043f\u0440\u043e\u0441\u0442\u044b\u0435 KIN HB",
+    "label": "kin-hb",
+    "description": "\u043a\u0430\u0440\u0430\u043d\u0434\u0430\u0448\u0438 \u043f\u0440\u043e\u0441\u0442\u044b\u0435 KIN HB \u0432 \u043f\u0430\u0447\u043a\u0435",
+    "catalog": 6,
+    "price": "75.00",
+    "counts": 150
+  }
+},
+{
+  "model": "example.product",
+  "pk": 4,
+  "fields": {
+    "name": "\u0442\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440 \u0421\u0430\u043c\u0441\u0443\u043d\u0433 24",
+    "label": "samsung-24inch",
+    "description": "\u0442\u0435\u043b\u0435\u0432\u0438\u0437\u043e\u0440 Samsung 24\" Smart-TV",
+    "catalog": 4,
+    "price": "24000.00",
+    "counts": 5
+  }
+},
+{
+  "model": "example.product",
+  "pk": 5,
+  "fields": {
+    "name": "\u043f\u044b\u043b\u0435\u0441\u043e\u0441 LG \u0432\u0430\u043a\u0443\u0443\u043c\u043d\u044b\u0439",
+    "label": "lg-vacuum",
+    "description": "\u043f\u044b\u043b\u0435\u0441\u043e\u0441 LG \u0432\u0430\u043a\u0443\u0443\u043c\u043d\u044b\u0439",
+    "catalog": 3,
+    "price": "5650.00",
+    "counts": 3
+  }
+},
+{
+  "model": "example.service",
+  "pk": 1,
+  "fields": {
+    "name": "\u0440\u0435\u043c\u043e\u043d\u0442",
+    "label": "repair",
+    "description": "\u043e\u0431\u044b\u0447\u043d\u044b\u0439 \u0440\u0435\u043c\u043e\u043d\u0442",
+    "manager": 3
+  }
+},
+{
+  "model": "example.service",
+  "pk": 2,
+  "fields": {
+    "name": "\u0441\u0442\u0440\u0430\u0445\u043e\u0432\u0430\u043d\u0438\u0435",
+    "label": "insurance",
+    "description": "\u0441\u0442\u0440\u0430\u0445\u043e\u0432\u0430\u043d\u0438\u0435 \u043e\u0442 \u043c\u0435\u043b\u043a\u0438\u0445 \u043f\u043e\u043b\u043e\u043c\u043e\u043a \u043f\u043e\u0441\u043b\u0435 \u0433\u0430\u0440\u0430\u043d\u0438\u0447\u043d\u043e\u0433\u043e \u0441\u0440\u043e\u043a\u0430",
+    "manager": 4
+  }
+},
+{
+  "model": "example.service",
+  "pk": 3,
+  "fields": {
+    "name": "\u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u043a\u0443\u0440\u044c\u0435\u0440\u043e\u043c",
+    "label": "delivery-courier",
+    "description": "\u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u043a\u0443\u0440\u044c\u0435\u0440\u043e\u043c \u043f \u043e \u0433\u043e\u0440\u043e\u0434\u0443",
+    "manager": 4
+  }
+},
+{
+  "model": "example.service",
+  "pk": 4,
+  "fields": {
+    "name": "\u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u043f\u043e \u043f\u043e\u0447\u0442\u0435",
+    "label": "delivery_postoffice",
+    "description": "\u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0430 \u043f\u043e\u0447\u0442\u043e\u0439 \u043f\u043e \u0423\u043a\u0440\u0430\u0438\u043d\u0435",
+    "manager": 3
+  }
+},
+{
+  "model": "example.tarif",
+  "pk": 1,
+  "fields": {
+    "product": 1,
+    "service": 1,
+    "price": "500.0000",
+    "is_active": true,
+    "archived": false
+  }
+},
+{
+  "model": "example.tarif",
+  "pk": 2,
+  "fields": {
+    "product": 1,
+    "service": 2,
+    "price": "100.0000",
+    "is_active": true,
+    "archived": false
+  }
+},
+{
+  "model": "example.tarif",
+  "pk": 4,
+  "fields": {
+    "product": null,
+    "service": 3,
+    "price": "50.0000",
+    "is_active": true,
+    "archived": false
+  }
+},
+{
+  "model": "example.tarif",
+  "pk": 5,
+  "fields": {
+    "product": null,
+    "service": 4,
+    "price": "30.0000",
+    "is_active": true,
+    "archived": false
+  }
+},
+{
+  "model": "datasamples.sample",
+  "pk": 1,
+  "fields": {
+    "name": "example1",
+    "description": "\u0421\u0445\u0435\u043c\u0430 \u0434\u043e\u0441\u0442\u0443\u043f\u0430 \u043a \u0434\u0430\u043d\u043d\u044b\u043c \u043f\u0440\u0438\u043b\u043e\u0436\u0435\u043d\u0438\u044f example\r\n\u041e\u0442\u0447\u0451\u0442 \u043f\u043e \u043e\u0442\u0432\u0435\u0442\u0441\u0432\u0435\u043d\u043d\u043e\u0441\u0442\u0438 \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u043e\u0432",
+    "created": "2019-10-17T18:24:57.523Z",
+    "updated": "2019-10-17T21:06:57.989Z",
+    "is_active": true,
+    "deleted": false,
+    "version": "0",
+    "revision": 4,
+    "publisher": 1,
+    "author": 1,
+    "obj": "gANjZGF0YXNhbXBsZS5lbGVtZW50cwpTYW1wbGUKcQApgXEBY2NvbGxlY3Rpb25zCk9yZGVyZWREaWN0CnECKVJxAyhYBgAAAHRhYmxlc3EEfXEFWAQAAABtYWlucQZYQAIAAHdpdGgKcHJvZHVjdHMgYXMgKAogICAgc2VsZWN0CiAgICAgICAgcC5pZCBhcyBwcm9kdWN0X2lkCiAgICAsICAgcC5uYW1lIGFzIHByb2R1Y3RfbmFtZQogICAgLCAgIHAubGFiZWwgYXMgcHJvZHVjdF9sYWJlbAogICAgLCAgIHAuZGVzY3JpcHRpb24gYXMgcHJvZHVjdF9kZXNjcmlwdGlvbgogICAgLCAgIHAucHJpY2UgYXMgcHJvZHVjdF9wcmljZQogICAgLCAgIHAuY291bnRzIGFzIHByb2R1Y3RfY291bnRzCiAgICAsICAgcC5jYXRhbG9nX2lkCiAgICAsICAgYy5uYW1lIGFzIGNhdGFsb2dfbmFtZQogICAgLCAgIGMubWFuYWdlcl9pZCBhcyBwcm9kdWN0X21hbmFnZXJfaWQKICAgIGZyb20KICAgICAgICAgZXhhbXBsZV9wcm9kdWN0IGFzIHAKICAgICAgICAgICAgIEpPSU4gZXhhbXBsZV9jYXRhbG9nIGFzIGMgT04gcC5jYXRhbG9nX2lkID0gYy5pZAopCnNlbGVjdAogICAgdS51c2VybmFtZSwgdS5maXJzdF9uYW1lLCB1Lmxhc3RfbmFtZSwgdS5pc19hY3RpdmUKLCAgIHAuKgpmcm9tIGF1dGhfdXNlciBhcyB1CiAgICBKT0lOIHByb2R1Y3RzIGFzIHAgT04gcC5wcm9kdWN0X21hbmFnZXJfaWQgPSB1LmlkCnEHc1gGAAAAZmllbGRzcQh9cQkoWBIAAABwcm9kdWN0X21hbmFnZXJfaWRxCmgCKVJxCyhYCQAAAG1hbmRhdG9yeXEMiVgFAAAAY3R5cGVxDVgHAAAASW50ZWdlcnEOWAUAAABsYWJlbHEPWDUAAABJRCDQvNC10L3QtdC00LbQtdGA0LAg0LrQsNGC0LXQs9C+0YDQuNC4INGC0L7QstCw0YDQsHEQWAMAAABrZXlxEYhYBAAAAGNhbGNxEk5YCAAAAGZpbHRlcmVkcRNdcRQoWAEAAAA9cRVYAgAAACE9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",
+    "src": {
+      "fields": {
+        "username": {
+          "key": true,
+          "calc": null,
+          "alias": "username",
+          "ctype": "String",
+          "label": "login \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": true,
+          "filtered": null,
+          "mandatory": false,
+          "expression": "username"
+        },
+        "is_active": {
+          "key": true,
+          "calc": null,
+          "alias": "last_name",
+          "ctype": "Boolean",
+          "label": "\u0430\u043a\u0442\u0438\u0432\u0435\u043d",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "is null",
+            "is not null"
+          ],
+          "mandatory": false,
+          "expression": "last_name"
+        },
+        "last_name": {
+          "key": true,
+          "calc": null,
+          "alias": "last_name",
+          "ctype": "String",
+          "label": "\u0424\u0430\u043c\u0438\u043b\u0438\u044f",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in",
+            "like",
+            "not like"
+          ],
+          "mandatory": false,
+          "expression": "last_name"
+        },
+        "catalog_id": {
+          "key": true,
+          "calc": null,
+          "alias": "catalog_id",
+          "ctype": "Integer",
+          "label": "ID \u0433\u0440\u0443\u043f\u043f\u044b \u0442\u043e\u0432\u0430\u0440\u0430 \u0432 \u043a\u0430\u0442\u0430\u043b\u043e\u0433\u0435",
+          "table": "main",
+          "having": null,
+          "hidden": true,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in"
+          ],
+          "mandatory": false,
+          "expression": "catalog_id"
+        },
+        "first_name": {
+          "key": true,
+          "calc": null,
+          "alias": "first_name",
+          "ctype": "String",
+          "label": "\u0418\u043c\u044f",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in",
+            "like",
+            "not like"
+          ],
+          "mandatory": false,
+          "expression": "first_name"
+        },
+        "product_id": {
+          "key": true,
+          "calc": null,
+          "alias": "product_id",
+          "ctype": "Integer",
+          "label": "ID \u0442\u043e\u0432\u0430\u0440\u0430",
+          "table": "main",
+          "having": null,
+          "hidden": true,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in"
+          ],
+          "mandatory": false,
+          "expression": "product_id"
+        },
+        "catalog_name": {
+          "key": true,
+          "calc": null,
+          "alias": "catalog_name",
+          "ctype": "String",
+          "label": "\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0433\u0440\u0443\u043f\u043f\u044b \u0442\u043e\u0432\u0430\u0440\u0430",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in",
+            "like",
+            "not like"
+          ],
+          "mandatory": false,
+          "expression": "catalog_name"
+        },
+        "product_name": {
+          "key": true,
+          "calc": null,
+          "alias": "product_name",
+          "ctype": "String",
+          "label": "\u043d\u0430\u0437\u0432\u0430\u043d\u0438\u0435 \u0442\u043e\u0432\u0430\u0440\u0430",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in",
+            "like",
+            "not like"
+          ],
+          "mandatory": false,
+          "expression": "product_name"
+        },
+        "product_label": {
+          "key": true,
+          "calc": null,
+          "alias": "product_label",
+          "ctype": "String",
+          "label": "\u044f\u0440\u043b\u044b\u043a \u0442\u043e\u0432\u0430\u0440\u0430",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in",
+            "like",
+            "not like"
+          ],
+          "mandatory": false,
+          "expression": "product_label"
+        },
+        "product_price": {
+          "key": false,
+          "calc": [
+            "min",
+            "max",
+            "avg"
+          ],
+          "alias": "product_price",
+          "ctype": "Decimal",
+          "label": "\u0426\u0435\u043d\u0430",
+          "table": "main",
+          "having": [
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">="
+          ],
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">=",
+            "between",
+            "not between"
+          ],
+          "mandatory": false,
+          "expression": "product_price"
+        },
+        "product_counts": {
+          "key": false,
+          "calc": [
+            "sum",
+            "min",
+            "max",
+            "avg"
+          ],
+          "alias": "product_price",
+          "ctype": "Decimal",
+          "label": "\u0426\u0435\u043d\u0430",
+          "table": "main",
+          "having": [
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">="
+          ],
+          "hidden": false,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "<",
+            "<=",
+            ">",
+            ">=",
+            "between",
+            "not between"
+          ],
+          "mandatory": false,
+          "expression": "product_price"
+        },
+        "product_manager_id": {
+          "key": true,
+          "calc": null,
+          "alias": "manager_id",
+          "ctype": "Integer",
+          "label": "ID \u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440\u0430 \u043a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u0438 \u0442\u043e\u0432\u0430\u0440\u0430",
+          "table": "main",
+          "having": null,
+          "hidden": true,
+          "ordered": true,
+          "filtered": [
+            "=",
+            "!=",
+            "in",
+            "not in"
+          ],
+          "mandatory": false,
+          "expression": "product_manager_id"
+        },
+        "product_description": {
+          "key": true,
+          "calc": null,
+          "alias": "product_description",
+          "ctype": "String",
+          "label": "\u043e\u043f\u0438\u0441\u0430\u043d\u0438\u0435 \u0442\u043e\u0432\u0430\u0440\u0430",
+          "table": "main",
+          "having": null,
+          "hidden": false,
+          "ordered": false,
+          "filtered": null,
+          "mandatory": false,
+          "expression": "product_description"
+        }
+      },
+      "params": {},
+      "tables": {
+        "main": "with\nproducts as (\n    select\n        p.id as product_id\n    ,   p.name as product_name\n    ,   p.label as product_label\n    ,   p.description as product_description\n    ,   p.price as product_price\n    ,   p.counts as product_counts\n    ,   p.catalog_id\n    ,   c.name as catalog_name\n    ,   c.manager_id as product_manager_id\n    from\n         example_product as p\n             JOIN example_catalog as c ON p.catalog_id = c.id\n)\nselect\n    u.username, u.first_name, u.last_name, u.is_active\n,   p.*\nfrom auth_user as u\n    JOIN products as p ON p.product_manager_id = u.id\n"
+      }
+    }
+  }
+}
+]

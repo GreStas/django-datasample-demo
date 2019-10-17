@@ -1,0 +1,55 @@
+.repos-container {
+    padding: 0 3%;
+}
+
+.label-for-field{
+    display: flex;
+    flex-direction: column;
+}
+
+.form-json-field-group {
+    display: grid;
+    grid-template-columns: 1fr 18% auto;
+    margin-bottom: 15px;
+}
+label {
+    display: block;
+    width: fit-content;
+    font-weight: 700;
+}
+
+.container-button {
+    display: flex;
+    flex-direction: column;
+    margin-top: 31px;
+}
+.container-button button {
+    margin: 0 20px 5px 20px;
+}
+.container-label{
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 19%);
+    grid-row-gap: 10px;
+    grid-gap: 10px;
+}
+.field{
+    vertical-align: top;
+    padding: 5px;
+}
+.head{
+    vertical-align: center;
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    background: #add8e66b;
+}
+
+/*.field{*/
+/*    border: 1px solid lightgray;*/
+/*    padding: 5px;*/
+/*    min-width: 5%;*/
+/*}*/
+/*.container-row{*/
+/*    display: flex;*/
+/*}*/

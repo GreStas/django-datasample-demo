@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+
+{% block body %}
+
+    <h2>Всего описаний схем доступа - {{ samples|length  }}</h2>
+    <a href="{% url 'datasamples:create-sample' %}" class="btn btn-outline-primary">Создать новую схему</a>
+
+<hr>
+{% for sample in samples %}
+    <div>
+        <a href="{% url 'datasamples:edit-sample' sample.id %}" class="btn btn-primary">Изменить</a>
+        <a href="{% url 'datasamples:check-datasample' sample.id %}" class="btn btn-primary">Dev tools</a>
+        <p>Идентификатор: {{ sample.name }}</p>
+        <p>Описание: {{ sample.fullname }}</p>
+        <p>Дата создания: {{ sample.created }}</p>
+        <p>Дата изменения: {{ sample.updated }}</p>
+        <p>Активна: {{ sample.is_active }}</p>
+        <p>Помечена на удаление: {{ sample.deleted }}</p>
+        <p>Версия: {{ sample.version }}</p>
+        <p>Ответсвенный редактор: {{ sample.publisher }}</p>
+        <p>Ревизия: {{ sample.revision }}</p>
+        <p>Разработчик ревизии: {{ sample.author }}</p>
+        <hr>
+    </div>
+{% endfor %}
+{% endblock %}

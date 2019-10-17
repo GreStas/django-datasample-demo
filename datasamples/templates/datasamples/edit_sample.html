@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block body %}
+    {% if form.instance.id %}
+        <form action="{% url 'datasamples:edit-sample' pk=form.instance.id %}" method="post">
+        <div>
+        <a href="{% url 'datasamples:check-datasample' form.instance.id %}" class="btn btn-outline-primary">Dev tools</a>
+    {% else %}
+        <form action="{% url 'datasamples:create-sample' %}" method="post">
+        <div>
+    {% endif %}
+        <button class="btn btn-primary">Сохранить</button>
+        </div>
+        <hr>
+{% csrf_token %}
+{% for field in form %}
+    <div class="form-group">
+        <label for="">{{ field.label }}</label>
+        {{ field }}
+    </div>
+{% endfor %}
+</form>
+{% endblock %}

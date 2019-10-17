@@ -1,0 +1,307 @@
+{
+  "sample":
+{
+  "tables": {
+    "main": "with\nproducts as (\n    select\n        p.id as product_id\n    ,   p.name as product_name\n    ,   p.label as product_label\n    ,   p.description as product_description\n    ,   p.price as product_price\n    ,   p.counts as product_counts\n    ,   p.catalog_id\n    ,   c.name as catalog_name\n    ,   c.manager_id as product_manager_id\n    from\n         example_product as p\n             JOIN example_catalog as c ON p.catalog_id = c.id\n)\nselect\n    u.username, u.first_name, u.last_name, u.is_active\n,   p.*\nfrom auth_user as u\n    JOIN products as p ON p.product_manager_id = u.id\n"
+  },
+  "fields": {
+    "product_manager_id": {
+      "mandatory": false,
+      "ctype": "Integer",
+      "label": "ID менеджера категории товара",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": true,
+      "table": "main",
+      "expression": "product_manager_id",
+      "alias": "manager_id"
+    },
+    "username": {
+      "mandatory": false,
+      "ctype": "String",
+      "label": "login менеджера",
+      "key": true,
+      "calc": null,
+      "filtered": null,
+      "ordered": true,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "username",
+      "alias": "username"
+    },
+    "first_name": {
+      "mandatory": false,
+      "ctype": "String",
+      "label": "Имя",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in",
+        "like",
+        "not like"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "first_name",
+      "alias": "first_name"
+    },
+    "last_name": {
+      "mandatory": false,
+      "ctype": "String",
+      "label": "Фамилия",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in",
+        "like",
+        "not like"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "last_name",
+      "alias": "last_name"
+    },
+    "is_active": {
+      "mandatory": false,
+      "ctype": "Boolean",
+      "label": "активен",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "is null",
+        "is not null"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "last_name",
+      "alias": "last_name"
+    },
+    "product_id": {
+      "mandatory": false,
+      "ctype": "Integer",
+      "label": "ID товара",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": true,
+      "table": "main",
+      "expression": "product_id",
+      "alias": "product_id"
+    },
+    "product_name": {
+      "mandatory": false,
+      "ctype": "String",
+      "label": "название товара",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in",
+        "like",
+        "not like"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "product_name",
+      "alias": "product_name"
+    },
+    "product_label": {
+      "mandatory": false,
+      "ctype": "String",
+      "label": "ярлык товара",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in",
+        "like",
+        "not like"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "product_label",
+      "alias": "product_label"
+    },
+    "product_description": {
+      "mandatory": false,
+      "ctype": "String",
+      "label": "описание товара",
+      "key": true,
+      "calc": null,
+      "filtered": null,
+      "ordered": false,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "product_description",
+      "alias": "product_description"
+    },
+    "product_price": {
+      "mandatory": false,
+      "ctype": "Decimal",
+      "label": "Цена",
+      "key": false,
+      "calc": [
+        "min",
+        "max",
+        "avg"
+      ],
+      "filtered": [
+        "=",
+        "!=",
+        "<",
+        "<=",
+        ">",
+        ">=",
+        "between",
+        "not between"
+      ],
+      "ordered": true,
+      "having": [
+        "=",
+        "!=",
+        "<",
+        "<=",
+        ">",
+        ">="
+      ],
+      "hidden": false,
+      "table": "main",
+      "expression": "product_price",
+      "alias": "product_price"
+    },
+    "product_counts": {
+      "mandatory": false,
+      "ctype": "Decimal",
+      "label": "Цена",
+      "key": false,
+      "calc": [
+        "sum",
+        "min",
+        "max",
+        "avg"
+      ],
+      "filtered": [
+        "=",
+        "!=",
+        "<",
+        "<=",
+        ">",
+        ">=",
+        "between",
+        "not between"
+      ],
+      "ordered": true,
+      "having": [
+        "=",
+        "!=",
+        "<",
+        "<=",
+        ">",
+        ">="
+      ],
+      "hidden": false,
+      "table": "main",
+      "expression": "product_price",
+      "alias": "product_price"
+    },
+    "catalog_id": {
+      "mandatory": false,
+      "ctype": "Integer",
+      "label": "ID группы товара в каталоге",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": true,
+      "table": "main",
+      "expression": "catalog_id",
+      "alias": "catalog_id"
+    },
+    "catalog_name": {
+      "mandatory": false,
+      "ctype": "String",
+      "label": "название группы товара",
+      "key": true,
+      "calc": null,
+      "filtered": [
+        "=",
+        "!=",
+        "in",
+        "not in",
+        "like",
+        "not like"
+      ],
+      "ordered": true,
+      "having": null,
+      "hidden": false,
+      "table": "main",
+      "expression": "catalog_name",
+      "alias": "catalog_name"
+    }
+  },
+  "params": {}
+}
+,
+  "parapms": {}
+,
+  "options":
+{
+  "fields":[
+    ["first_name", null],
+    ["last_name", null],
+    ["catalog_name", null],
+    ["product_price", "avg"],
+    ["product_counts", "sum"]
+  ],
+  "group": [
+    "last_name", "first_name", "catalog_name"
+  ],
+  "order": [
+    ["last_name", "asc"],
+    ["first_name", "asc"]
+  ]
+}
+}

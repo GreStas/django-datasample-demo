@@ -1,0 +1,13 @@
+version: '2'
+services:
+  db:
+    image: postgres:alpine
+    volumes:
+      - /var/run/postgresql:/var/run/postgresql:z
+    ports:
+      - 127.0.0.101:5432:5432/tcp
+
+#  redis:
+#    image: redis:alpine
+#    ports:
+#      - 127.0.0.101:6379:6379/tcp

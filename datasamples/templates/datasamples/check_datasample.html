@@ -1,0 +1,145 @@
+{% extends 'index.html' %}
+
+{% block body %}
+<form action="{% url 'datasamples:check-datasample' pk=form.instance.id %}" method="post">
+    {% csrf_token %}
+
+    <div class="container-label">
+        <div>
+            <label for="">{{ form.name.label }}</label>
+            {{ form.name }}
+        </div>
+        <div>
+            <label for="">{{ form.revision.label }}</label>
+            {{ form.revision }}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button name="btnOK" value="SaveSample" class="btn btn-primary">Сохранить описание Схемы</button>
+        <button name="btnOK" value="Reload" class="btn btn-outline-primary">Перечитать описание Схемы</button>
+    </div>
+
+
+    <div class="form-json-field-group">
+        <div class="label-for-field">
+            <label for="">{{form.src_json.label}}</label>
+            {{form.src_json}}
+        </div>
+        <div class="container-button">
+            <button name="btnOK" value="CheckSample" class="btn btn-outline-primary">Проверить описание Схемы</button>
+            <button name="btnOK" value="PythonSample" class="btn btn-outline-secondary">Generate repr(Sample)</button>
+        </div>
+        <div class="label-for-field">
+            <label for="">{{form.src_python.label}}</label>
+            {{form.src_python}}
+        </div>
+    </div>
+
+    <div class="form-json-field-group">
+        <div class="label-for-field">
+            <label for="">{{form.params_json.label}}</label>
+            {{form.params_json}}
+        </div>
+        <div class="container-button">
+            <button name="btnOK" value="CheckParams" class="btn btn-outline-primary">Проверить параметры</button>
+            <button name="btnOK" value="PythonParams" class="btn btn-outline-secondary">Generate repr(Params)</button>
+        </div>
+        <div class="label-for-field">
+            <label for="">{{form.params_python.label}}</label>
+            {{form.params_python}}
+        </div>
+    </div>
+
+    <div class="form-json-field-group">
+        <div class="label-for-field">
+            <label for="">{{form.options_json.label}}</label>
+            {{form.options_json}}
+        </div>
+        <div class="container-button">
+            <button name="btnOK" value="CheckOptions" class="btn btn-outline-primary">Проверить настройки</button>
+            <button name="btnOK" value="PythonOptions" class="btn btn-outline-secondary">Generate repr(Options)</button>
+        </div>
+        <div class="label-for-field">
+            <label for="">{{form.options_python.label}}</label>
+            {{form.options_python}}
+        </div>
+    </div>
+
+    <div class="form-json-field-group">
+        <div class="label-for-field">
+            <label for="">{{form.sql_stmt.label}}</label>
+            {{form.sql_stmt}}
+        </div>
+        <div class="container-button">
+            <button name="btnOK" value="Сompose" class="btn btn-outline-primary">Скомпоновать</button>
+            <button name="btnOK" value="Execute" class="btn btn-outline-primary">Выполнить</button>
+        </div>
+        <div class="label-for-field">
+            <label for="">{{form.sql_kwargs.label}}</label>
+            {{form.sql_kwargs}}
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="container-label">
+            <div>
+                <label for="">{{ form.db_host.label }}</label>
+                {{ form.db_host }}
+            </div>
+            <div>
+                <label for="">{{ form.db_port.label }}</label>
+                {{ form.db_port }}
+            </div>
+            <div>
+                <label for="">{{ form.db_name.label }}</label>
+                {{ form.db_name }}
+            </div>
+            <div>
+                <label for="">{{ form.db_user.label }}</label>
+                {{ form.db_user }}
+            </div>
+            <div>
+                <label for="">{{ form.db_password.label }}</label>
+                {{ form.db_password }}
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+    {% if header %}
+        <table border="2">
+        {% for head in header %}
+            <th class="head">
+                {{ head }}
+            </th>
+        {% endfor %}
+        {% if dataset %}
+            {% for row in dataset %}
+                <tr>
+                    {% for col in row %}
+                        <td class="field">
+                                {{ col }}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+    {% endif %}
+
+{#    {% if dataset %}#}
+{#        {% for row in dataset %}#}
+{#            <div class="container-row">#}
+{#            {% for col in row %}#}
+{#               <div class="field">{{ col }}</div>#}
+{#            {% endfor %}#}
+{#            <hr>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#    {% endif %}#}
+
+{% endblock %}
