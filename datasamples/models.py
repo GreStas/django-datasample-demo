@@ -11,8 +11,8 @@ __all__ = ('Sample',)
 class Sample(models.Model):
     class Meta:
         unique_together = ('name', 'version',)
-        verbose_name = "описание схемы компоновки данных"
-        verbose_name_plural = "описания схем компоновки данных"
+        verbose_name = "описание схемы выборки данных (СВД)"
+        verbose_name_plural = "описания схем выборки данных (СВД)"
 
     name = models.CharField(max_length=32,
                             verbose_name="ID",
@@ -54,8 +54,8 @@ class Sample(models.Model):
         help_text="Кто последний менял description, metadata",
     )
     obj = models.BinaryField(help_text="бинарное представления объекта Sample")
-    src = models.JSONField(help_text="Читабельное представление объекта Sample. "
-                                     "Автоматически генерируется из поля 'Sample.obj'")
+    src = JSONField(help_text="Читабельное представление объекта Sample. "
+                              "Автоматически генерируется из поля 'Sample.obj'")
 
     def __str__(self):
         return self.name

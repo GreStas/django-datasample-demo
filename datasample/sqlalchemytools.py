@@ -1,3 +1,6 @@
+"""
+    Модуль преобразования СВД + значения параметров + Настройки в SQL
+"""
 from typing import Sequence  # , List, Tuple, Dict, DefaultDict, Set, FrozenSet, Union
 from sqlalchemy import create_engine
 from sqlalchemy.sql import text, select
@@ -52,31 +55,43 @@ def compose(sample_meta: dict, params: dict, options: dict):
         dict(<bind_name>: <bind_value>), - словарь bindary variables
     )
     """
+    # Валидируем описание СВД
     sample = Sample(sample_meta)
+    # Валидируем параметры на соответсвие СВД
     check_params(params, sample)
+    # Валидируем настроки на соответствие СВД
     check_options(options, sample)
 
+    # Поля для SQL-фразы SELECT
     column_fields = [name for name, *_ in options['fields']]
+    # Поля для SQL-фразы GROUP BY
     group_fields = options['group'] if 'group' in options else []
+    # Поля для SQL-фразы HAVING
     having_fields = [field for field, *_ in options['having']] if 'having' in options else []
+    # Поля для SQL-фразы ORDER BY
     order_fields = [field for field, *_ in options['order']] if 'order' in options else []
+    # Все используемые поля
     using_fields = {*column_fields, *group_fields, *having_fields, *order_fields}
 
-    fields = dict()
+    fields = dict()  # Все используемые поля в словаре ИмяПоля:ЭлементПоля
     for field_name in using_fields:
         fields[field_name] = Field(field_name, **sample.fields)
 
-    query = select([
+    #
+    # Сосавляем текст SQL-запроса
+    #
+    query = select([  # SELECT
         text(
             f'{operation}({fields[field_name].sql_identifier}) AS {fields[field_name].sql_alias} ' if operation
             else fields[field_name].sql_column
         )
         for field_name, operation in options['fields'] if field_name in column_fields
     ]
-    ).select_from(
+    ).select_from(  # FROM
         sample.sql_tables(using_fields)
     )
 
+    # WHERE
     if 'filters' in options:
         filters = []
         for field_name, operation, args in options['filters']:
@@ -89,12 +104,14 @@ def compose(sample_meta: dict, params: dict, options: dict):
             '\n  AND '.join(filters)
         ))
 
+    # GROUP BY
     if 'group' in options:
         query = query.group_by(text(', '.join([
             f'{fields[field_name].sql_identifier}'
             for field_name in options['group']
         ])))
 
+    # HAVING
     if 'having' in options:
         havings = []
         for field_name, operation, args in options['having']:
@@ -112,6 +129,7 @@ def compose(sample_meta: dict, params: dict, options: dict):
             '\n  AND '.join(havings)
         ))
 
+    # ORDER BY
     if 'order' in options:
         query = query.order_by(text(', '.join([
             f'{fields[field_name].sql_alias} {direct}'
@@ -123,6 +141,7 @@ def compose(sample_meta: dict, params: dict, options: dict):
 
 
 def sql_op_args(op: str, args: Sequence, ctype: str) -> str:
+    """ Транслировать значения операндов в строку """
     if OPERATIONS_ARGS[op] == tuple():
         return ''
     if OPERATIONS_ARGS[op] == ('<ctype>',):

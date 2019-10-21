@@ -1,5 +1,5 @@
 # Инструмент разработчика для выгрузки из БД Django по шаблонным SQL
-(django-sql-repos-dev)
+(django-datasample-demo)
 
 ## Описание идеи
 **Цель** - отделить разработку SQL-запроса от разработки отчётов на их основе. 
@@ -57,4 +57,7 @@ admin | zaq12wsx
 boss, manager1, manager2, seller1, seller2 | ZAQ!2wsx
 
 ### Тестовые данные
+
 Загружаются скриптом _loaddata.sh_ из example/tests/example_data.json
+
+Пример options - в файле example/tests/example_schema1.json

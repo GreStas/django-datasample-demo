@@ -13,12 +13,14 @@ __all__ = (
 )
 
 
+# допустимые типы полей в СВД и трансляция их на типы Python
 CTYPES = {
     "Boolean": (bool,),
     "String": (str,),
     "Integer": (int,),
     "Decimal": (float, Decimal),
 }
+# Допустимые операции над типами полей
 OPERATIONS = {
     "Boolean": ('is null', 'is not null',),
     "String": ('is null', 'is not null', '=', '!=', 'in', 'not in', 'like', 'not like',),
@@ -26,6 +28,9 @@ OPERATIONS = {
     "Decimal": ('is null', 'is not null', '=', '!=', 'in', 'not in', '<', '<=', '>', '>=', 'between', 'not between',),
     "Date": ('is null', 'is not null', '=', '!=', 'in', 'not in', '<', '<=', '>', '>=', 'between', 'not between',),
 }
+# допустиые типы операндов для операций
+# '<ctype>' - задумано как один из допустимых типов полей
+# '<collection>' - задумано как последовательность из допустимых типов полей
 OPERATIONS_ARGS = {
     'is null': tuple(),
     'is not null': tuple(),
@@ -40,18 +45,23 @@ OPERATIONS_ARGS = {
     'between': ('<ctype>', '<ctype>'),
     'not between': ('<ctype>', '<ctype>'),
 }
+# Допустимые функции агрегации данных
 AGGREGATES = ('sum', 'avg', 'min', 'max',)
 
+# Перечень шаблонов известных ошибок валидации
 ERR_MSG_NOTCTYPE = f"'ctype' must be in {OPERATIONS.keys()}"
 ERR_MSG_NOTIDENTIFIER = 'Value must be Python and SQL identifier compatible.'
 ERR_MSG_NOTOPERATION = f"All values must be in ({OPERATIONS})."
 ERR_MSG_NOTAGGREGATED = f"All values must be in ({AGGREGATES})."
 ERR_MSG_KEY_CALC = "Only one of 'key' and 'calc' must by set on."
 
+# Для описания параметров полей СВД используем структуру FieldType
+# namedtuple позволяет работать с данными как с классом, при этом данные упорядочены как в кортеже
 FieldType = namedtuple('FieldType', ('datatype', 'default', 'validator', 'errmsg',))
 
 
 def check_val_ctype(val, ctype: str):
+    """ Проверка значениен на допустимые типы полей """
     return isinstance(val, tuple(CTYPES[ctype]))
 
 
@@ -84,6 +94,13 @@ def check_op_args(op: str, args: tuple, field_state: dict = None):
 
 
 class SampleElementError(Exception):
+    """
+        Исключение для обрабатываемых пакетом ошибок
+
+    self.errors - это словарь в котором
+        Ключи - идентифицирут элемент, коолрый валидировался
+        Значения - список развёрнутых сообщений об ошибках
+    """
     def __init__(self, errors: dict, **kwargs):
         super().__init__(**kwargs)
         self.errors = errors
@@ -94,7 +111,16 @@ class SampleElementError(Exception):
             for key, msgs in self.errors.items()
         ])
 
-
+#
+# Все функции check_* предназначены для конкретных валидаций
+# первый параметр - само проверяемое значение
+# второй параметр - полное состояние валидируемой структуры,
+#                   так как некотрые проверки являются кросс-проверками
+#                   или взаимо-дополняюцие
+#
+# Имя функции содержит перечень параметров поля, которые проверяются.
+# Напрмер, check_mandatory_hidden проверяет mandatory в сваязке с hidden.
+#
 def check_mandatory_hidden(val: str, state: dict = None):
     return not (bool(val) and bool(state['hidden']))
 
@@ -140,6 +166,15 @@ def check_key(val, state):
 
 
 class SampleElement:
+    """
+        Базовая функциональность любого элемента СВД
+
+    Атрибуты
+    ========
+    _TEMPLATE - словарь с описанием атрибутов полей в структуре FieldType
+                В наследниках необходимо определить _TEMPLATE своей структурой описания элемента
+    """
+
     _TEMPLATE = OrderedDict([('label', FieldType(str, "{{name}}", None, None))])
 
     def __init__(self, name: str, **kwargs):
@@ -148,14 +183,17 @@ class SampleElement:
 
     @property
     def template(self) -> dict:
+        """ Защищаем от изменения удобную нам mutable стурктуру данных OrderedDict """
         return self._TEMPLATE
 
     @property
     def name(self):
+        """ Установка имени элемента должна валидироваться. Поэтому защищаем свойством. """
         return self._name
 
     @name.setter
     def name(self, value: str):
+        """ Установка имени элемента должна валидироваться. Поэтому защищаем свойством. """
         if isinstance(value, str) and value.isidentifier():
             self._name = value
         else:
@@ -163,23 +201,28 @@ class SampleElement:
 
     @property
     def state(self):
+        """ Установка внутреннего состояния элемента должна валидироваться. Поэтому защищаем свойством. """
         return self._state
 
     @state.setter
     def state(self, value: dict):
-        new_state = self.defaults
+        """ Установка внутреннего состояния элемента должна валидироваться. Поэтому защищаем свойством. """
+        new_state = self.defaults  # Используем своё свойство, которое гарантирует тип и результат.
         if value is None:
-            self._state = new_state
+            self._state = new_state  # по-умолчанию возвращаем структуру со сзначениями по-умолчанию
             return
+        # Контролируем типы на входе, чтобы потом в неожиданном месте не наскочить на исключение.
         if not isinstance(value, (dict, OrderedDict)):
             raise TypeError("Incompatibe type: expected dict or OrderedDict")
+        # Если для ключей из шаблона структуры элемента валидируем тип и перекрываем в итоговой структуре
         for attr in self.attributes:
             if attr in value and isinstance(value[attr], self.template[attr].datatype):
                 new_state[attr] = value[attr]
+        # Валидация всей структуры на основе данных шаблона
         messages = dict()
         for attr in self.attributes:
             if self.template[attr].validator and not self.template[attr].validator(new_state[attr], new_state):
-                messages[attr] = self.template[attr].errmsg
+                messages[attr] = self.template[attr].errmsg  # ошибки валидации накапливаем
         if messages:
             raise SampleElementError(messages)
         self._state = new_state
@@ -190,7 +233,7 @@ class SampleElement:
     def __setstate__(self, value: tuple):
         if len(value) != 2:
             raise ValueError("'value' must be tuple of the pair '<field_name>', {<dictionary_of_state>}")
-        self.name, self.state = value
+        self.name, self.state = value  # валиадци будет выпонена в сеттерах свойств
 
     @property
     def attributes(self):
@@ -198,9 +241,15 @@ class SampleElement:
 
     @property
     def defaults(self) -> OrderedDict:
+        """ Создаём новый экземпляр структуры элемента из шаблона """
         return OrderedDict(**{attr: self.get_default(attr) for attr in self.attributes})
 
     def get_default(self, attr: str):
+        """
+            Получить значение атрибута по-умолчанию
+
+        имя атрибута {{name}} - зарезервировано для ситуаций, когда значение опирается на имя элемента
+        """
         return self.name if self.template[attr].default == "{{name}}" else self.template[attr].default
 
     def __repr__(self):
@@ -208,38 +257,53 @@ class SampleElement:
 
 
 class Field(SampleElement):
+    """ Описание Поля в СВД """
+
     _TEMPLATE = OrderedDict([
+        # обязательный для включения в выборку
         ('mandatory', FieldType(bool, False,
                                 check_mandatory_hidden,
                                 'mandatory can not be equal hidden')),
+        # Тип поля
         ('ctype', FieldType(str, "String",
                             check_ctype,
                             ERR_MSG_NOTCTYPE)),
+        # Метка для форм и отчётов
         ('label', FieldType(str, "{{name}}",
                             None, None)),
+        # Признак, что поле может быть включено в группировку
         ('key', FieldType(bool, False,
                           check_key,
                           ERR_MSG_KEY_CALC)),
+        # Признак, что полле может быть включено в аггрегацию
         ('calc', FieldType((tuple, list), None,
                            check_aggregates,
                            ERR_MSG_KEY_CALC + ERR_MSG_NOTAGGREGATED)),
+        # Признак, что поле можт участвовать в where
         ('filtered', FieldType((tuple, list), None,
                                check_operations,
                                ERR_MSG_NOTOPERATION)),
+        # Признак, что поле может быть включено в сортировку
         ('ordered', FieldType(bool, False,
                               None, None)),
+        # Признак, что поле может быть включено в отбор
         ('having', FieldType((tuple, list), None,
                              check_having,
                              'having-field can by set on only for calc-field.')),
+        # Признак, что это поле не преназначено для пользовательского вывода,
+        # но, например, необходимо для фильтров или сортировок или т.п.
         ('hidden', FieldType(bool, False,
                              check_hidden_mandatory,
                              'hidden can not be equal mandatory')),
+        # Из какой таблицы это поле
         ('table', FieldType(str, 'main',
                             check_identifier,
                             ERR_MSG_NOTIDENTIFIER)),
+        # SQL-выражене для вычисления поля
         ('expression', FieldType(str, "{{name}}",
                                  check_identifier,
                                  ERR_MSG_NOTIDENTIFIER)),
+        # SQL-алиас этого поля
         ('alias', FieldType(str, "{{name}}",
                             check_identifier,
                             ERR_MSG_NOTIDENTIFIER)),
@@ -247,64 +311,35 @@ class Field(SampleElement):
 
     @property
     def sql_identifier(self):
+        """ Получить полный идентификатор поля для SQL """
         return f''' "{self._state['table']}"."{self._state['expression']}" '''
 
     @property
     def sql_alias(self):
+        """ Получить SQL-алиас поля"""
         return f''' "{self._state['alias']}" '''
 
     @property
     def sql_column(self):
+        """ Получить полный идентификатор поля для SQL c аласом поля для SQL-фразы select"""
         return f'''{self.sql_identifier} AS {self.sql_alias} '''
 
 
 class Param(SampleElement):
+    """ Описание Параметра в СВД """
     _TEMPLATE = OrderedDict([
+        # Тип параметра
         ('ctype', FieldType(str, "String",
                             check_ctype,
                             ERR_MSG_NOTCTYPE)),
+        # Метка для форм
         ('label', FieldType(str, "{{name}}",
                             None, None)),
     ])
 
 
-def check_from(val: dict, state: dict = None):
-    return isinstance(val, dict) \
-           and 'main' in val \
-           and all(val.values()) \
-           and all(check_identifier(alias) for alias in val)
-
-
-def check_fields(val, state):
-    messages = dict()
-    for field_name, field_state in val.items():
-        try:
-            field = Field(field_name, **field_state)
-            if field.state['table'] not in state['from']:
-                messages[field.name] = "\n".join([
-                    messages.get(field.name, ''),
-                    f"{field.name}.table='{field.state['table']}' must be one of aliases ({state['from'].keys()})."])
-        except SampleElementError as e:
-            messages.update(e.errors)
-    if messages:
-        raise SampleElementError(messages)
-    return True
-
-
-def check_params(val, state):
-    messages = dict()
-    for val_name, val_state in val.items():
-        try:
-            Field(val_name, **val_state)
-        except SampleElementError as e:
-            messages.update(e.errors)
-    if messages:
-        raise SampleElementError(messages)
-    return True
-
-
 class Sample:
-    """ Описание схемы выборки данных.
+    """ Описание схемы выборки данных (СВД).
 
     Цель: гаранитровать логическую целостность структуры.
 
@@ -327,7 +362,13 @@ class Sample:
             ('params', self.params),
         ])
 
-    def __setstate__(self, state: dict):
+    def __setstate__(self, state: dict) -> None:
+        """
+            Принять описание СВД, проверить, дополнить и сохранить в атрибуты класса
+
+        :param state: словарь с описанием СВД
+        :return: None
+        """
         self.tables = dict()
         self.fields = dict()
         self.params = dict()
@@ -340,8 +381,6 @@ class Sample:
                     add_message(tables_messages,
                                 f"tables[{alias}]",
                                 ERR_MSG_NOTIDENTIFIER)
-                    # tables_messages[f"tables[{alias}]"] =
-                    # tables_messages.get(tables_messages[f"tables[{alias}]"], []).append(ERR_MSG_NOTIDENTIFIER)
                 if not sql_stmt:
                     add_message(tables_messages,
                                 f"tables[{alias}]",
@@ -355,8 +394,9 @@ class Sample:
         fields_messages = dict()
         if 'fields' in state:
             for field_name, fields_state in state['fields'].items():
-                attribute = f"fields[{field_name}]"
+                attribute = f"fields[{field_name}]"  # для точной идентификации где произошла ошибка валидации
                 try:
+                    # прогоняем через класс-описатель поля, чтобы проверить и дополнить структуру
                     field = Field(field_name, **fields_state)
                     if field.state['table'] not in self.tables:
                         raise SampleElementError({
@@ -378,6 +418,7 @@ class Sample:
         if 'params' in state:
             for param_name, param_state in state['params'].items():
                 try:
+                    # прогоняем через класс-описатель параметра, чтобы проверить и дополнить структуру
                     param = Param(param_name, **param_state)
                     self.params[param.name] = param.state
                 except SampleElementError as e:
@@ -401,10 +442,10 @@ class Sample:
 
     def sql_tables(self, fields: Union[Sequence[str], Set[str], FrozenSet[str]]) -> str:
         """
-            Генерация списка колонок для фразы SELECT
+            Генерация списка таблиц для SQL-фразы WHERE
 
         :param fields: коллекция имён полей
-        :return: список колонок для фразы SELECT
+        :return: список таблиц с алиасами
         """
         using_tables = {
             state['table']

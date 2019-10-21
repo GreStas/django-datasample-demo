@@ -21,11 +21,11 @@ def index(request):
 
 @permission_required('datasamples.add_sample')
 def create_sample(request):
-    instance = models.Sample()
+    instance = models.Sample()  # Для начала предоставим пользователю СВД по-умолчанию
     if request.method == 'POST':
         form = SampleForm(request.POST, instance=instance)
         if form.is_valid():
-            instance = form.save(commit=False)
+            instance = form.save(commit=False)  # Не сохраняем, так как надо провалидировать всю схему
             instance.author = request.user
             instance.publisher = request.user
             instance.obj = pickle.dumps(datasample.Sample())
@@ -44,6 +44,7 @@ def create_sample(request):
 @permission_required('datasamples.change_sample')
 def edit_sample(request, pk):
     instance = get_object_or_404(models.Sample, pk=pk)
+    # Определяем поля, при изменении которых считается, что изменили атрибуты хранения СВД
     secure_fields = {'is_active', 'name', 'description', 'deleted', 'version'}
     if request.method == 'POST':
         form = SampleForm(request.POST, instance=instance)
@@ -57,7 +58,7 @@ def edit_sample(request, pk):
             except datasample.SampleElementError as e:
                 for name, msg in e.errors.items():
                     messages.add_message(request, messages.ERROR, f"'{name}': {msg}")
-            except Exception as e:  # TODO конкретизировать список исключений
+            except Exception as e:  # TODO конкретизировать список исключений по мере опыта тестовой эксплуатации
                 messages.add_message(request, messages.ERROR, str(e))
             return redirect('datasamples:all-samples')
     form = SampleForm(
@@ -77,6 +78,7 @@ def check_datasample(request, pk):
         return initial
 
     def get_header(sample_meta, options):
+        """ Получить заголовки колонок таблицы с выборкой данных из СВД """
         return [sample_meta['fields'][field_name]['label'] for field_name, _ in options['fields']]
 
     dataset = []

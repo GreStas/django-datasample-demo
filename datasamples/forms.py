@@ -38,15 +38,15 @@ class CheckDatasampleForm(forms.ModelForm):
     # ------------------------------------------------- metadata for compose --
     src_json = forms.CharField(label="Sample in JSON",
                                widget=forms.Textarea(attrs={'cols': 60}))
-    src_python = forms.CharField(label="Sample in Python", required=False,  # disabled=True,
+    src_python = forms.CharField(label="Sample in Python", required=False,
                                  widget=forms.Textarea(attrs={'cols': 80}))
     params_json = forms.CharField(label="Params in JSON", required=False,
                                   widget=forms.Textarea(attrs={'cols': 60}))
-    params_python = forms.CharField(label="Params in Python", required=False,  # disabled=True,
+    params_python = forms.CharField(label="Params in Python", required=False,
                                     widget=forms.Textarea(attrs={'cols': 80}))
     options_json = forms.CharField(label="Options in JSON", required=False,
                                    widget=forms.Textarea(attrs={'cols': 60}))
-    options_python = forms.CharField(label="Options in Python", required=False,  # disabled=True,
+    options_python = forms.CharField(label="Options in Python", required=False,
                                      widget=forms.Textarea(attrs={'cols': 80}))
     # ------------------------------------------------------------------ SQL --
     sql_stmt = forms.CharField(label="SQL statement", required=False, disabled=True,

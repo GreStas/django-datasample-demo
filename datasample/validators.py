@@ -37,6 +37,7 @@ def check_options(options: dict, sample: Sample):
             add_message(messages,
                         f"options[fields]",
                         f"'fields' должно быть перечислением имён полей.")
+        # Собрать в options_fields множество всех имён полей, упомянутых в настройках
         options_fields = set()
         for field in options['fields']:
             if isinstance(field, str):
@@ -48,12 +49,15 @@ def check_options(options: dict, sample: Sample):
                             f"'{field}' описание поля может быть "
                             f"<field_name>:str | tuple(<field_name>:str, <operation>:str)")
 
+        # Допустимые поля СВД для использования в настройках
         sample_fields = {name for name, state in sample.fields.items() if not state['hidden']}
+        # Не предусмотренные в СВД поля
         unknown_fields = options_fields - sample_fields
         if unknown_fields:
             add_message(messages,
                         'options[fields]',
                         f"не известные поля: {unknown_fields}")
+        # Обязательныве поля, которые отсутствуют в настройках
         mandatory_absent_fields = \
             {name for name, state in sample.fields.items() if state['mandatory']} - options_fields
         if mandatory_absent_fields:
@@ -67,15 +71,20 @@ def check_options(options: dict, sample: Sample):
 
     if 'filters' in options.keys():
         for field_name, operation, args in options['filters']:
+            # В фильтрации могут участвовать только известные поля
             if field_name not in sample.fields.keys():
                 add_message(messages,
                             'options[filters]',
                             f"не известное поле в фильтре: {field_name}")
+
+            # В фильтрации могут участвовать только поля с признаком фильтарции
+            # и допустимой для этого типа операцией сравнения
             elif bool(sample.fields[field_name]['filtered']) and operation not in sample.fields[field_name]['filtered']:
                 add_message(messages,
                             f"options[filters][{field_name}]",
                             f"не допустимая операция: {repr(operation)}")
             else:
+                # Проверяем корректность операндов
                 try:
                     check_op_args(operation, args)
                 except ValueError as e:
