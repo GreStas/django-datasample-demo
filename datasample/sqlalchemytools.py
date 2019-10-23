@@ -28,7 +28,7 @@ def execute(sample_meta: dict, params: dict, options: dict, db_settings: dict):
     engine = create_engine(
         f"postgresql:/"
         f"/{db_settings.get('USER')}"
-        f":{db_settings.get('PASSWORD')};"
+        f":{db_settings.get('PASSWORD')}"  # f":{db_settings.get('PASSWORD')}" 
         f"@{db_settings.get('HOST')}"
         f":{db_settings.get('PORT') if db_settings.get('PORT') else '5432'}"
         f"/{db_settings.get('NAME')}"
